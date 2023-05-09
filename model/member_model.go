@@ -20,7 +20,14 @@ func Push(member entity.Member) {
 }
 
 func Pop() {
-
+	temp := &database.DBMember
+	for temp.Next != nil {
+		if temp.Next.Next == nil {
+			temp.Next = nil
+			break
+		}
+		temp = temp.Next
+	}
 }
 
 func ViewAllMember() []entity.Member {
